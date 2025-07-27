@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamro Patro - नेपाली क्यालेन्डर</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>हाम्रो पात्रो</h1>
+                    <span>Hamro Patro</span>
+                </div>
+                <div class="header-info">
+                    <div class="date-info">
+                        <div class="nepali-date" id="nepaliDate">२०८१ साल</div>
+                        <div class="english-date" id="englishDate">2024 AD</div>
+                    </div>
+                    <div class="time-info">
+                        <div class="current-time" id="currentTime">12:00:00</div>
+                        <div class="location">काठमाडौं, नेपाल</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="calendar">
+                <i class="fas fa-calendar-alt"></i>
+                क्यालेन्डर
+            </button>
+            <button class="nav-tab" data-tab="festivals">
+                <i class="fas fa-star"></i>
+                चाडपर्व
+            </button>
+            <button class="nav-tab" data-tab="panchang">
+                <i class="fas fa-sun"></i>
+                पञ्चाङ्ग
+            </button>
+            <button class="nav-tab" data-tab="horoscope">
+                <i class="fas fa-moon"></i>
+                राशिफल
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calendar Tab -->
+            <div class="tab-content active" id="calendar">
+                <div class="calendar-header">
+                    <button class="nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="month-year">
+                        <h2 id="currentMonth">मंसिर २०८१</h2>
+                        <span id="currentMonthEng">November 2024</span>
+                    </div>
+                    <button class="nav-btn" id="nextMonth">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-grid">
+                        <div class="day-header">आइत</div>
+                        <div class="day-header">सोम</div>
+                        <div class="day-header">मंगल</div>
+                        <div class="day-header">बुध</div>
+                        <div class="day-header">बिहि</div>
+                        <div class="day-header">शुक्र</div>
+                        <div class="day-header">शनि</div>
+                        
+                        <!-- Calendar days will be populated by JavaScript -->
+                        <div id="calendarDays"></div>
+                    </div>
+                </div>
+
+                <div class="today-info">
+                    <div class="today-card">
+                        <h3>आजको मिति</h3>
+                        <div class="date-display">
+                            <div class="nepali-big" id="todayNepali">२०८१/०८/११</div>
+                            <div class="english-small" id="todayEnglish">2024/11/27</div>
+                        </div>
+                        <div class="day-info">
+                            <span class="tithi" id="tithi">शुक्ल पक्ष एकादशी</span>
+                            <span class="weekday" id="weekday">बुधबार</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Festivals Tab -->
+            <div class="tab-content" id="festivals">
+                <div class="festivals-header">
+                    <h2>चाडपर्वहरू</h2>
+                    <p>नेपालका मुख्य चाडपर्वहरूको सूची</p>
+                </div>
+                <div class="festivals-list">
+                    <div class="festival-item">
+                        <div class="festival-date">
+                            <span class="nepali-date">मंसिर १५</span>
+                            <span class="english-date">Dec 1, 2024</span>
+                        </div>
+                        <div class="festival-info">
+                            <h3>बिवाह पञ्चमी</h3>
+                            <p>सीता राम विवाहको उत्सव</p>
+                        </div>
+                    </div>
+                    <div class="festival-item">
+                        <div class="festival-date">
+                            <span class="nepali-date">पुष १५</span>
+                            <span class="english-date">Dec 30, 2024</span>
+                        </div>
+                        <div class="festival-info">
+                            <h3>माघे सङ्क्रान्ति</h3>
+                            <p>सूर्यको मकर राशिमा प्रवेश</p>
+                        </div>
+                    </div>
+                    <div class="festival-item upcoming">
+                        <div class="festival-date">
+                            <span class="nepali-date">माघ १</span>
+                            <span class="english-date">Jan 14, 2025</span>
+                        </div>
+                        <div class="festival-info">
+                            <h3>माघे सङ्क्रान्ति</h3>
+                            <p>तिल र घिउको दान</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panchang Tab -->
+            <div class="tab-content" id="panchang">
+                <div class="panchang-header">
+                    <h2>आजको पञ्चाङ्ग</h2>
+                    <p>शुभ मुहूर्त र ज्योतिषीय जानकारी</p>
+                </div>
+                <div class="panchang-grid">
+                    <div class="panchang-item">
+                        <div class="panchang-label">तिथि</div>
+                        <div class="panchang-value">शुक्ल पक्ष एकादशी</div>
+                    </div>
+                    <div class="panchang-item">
+                        <div class="panchang-label">नक्षत्र</div>
+                        <div class="panchang-value">रोहिणी</div>
+                    </div>
+                    <div class="panchang-item">
+                        <div class="panchang-label">करण</div>
+                        <div class="panchang-value">बव</div>
+                    </div>
+                    <div class="panchang-item">
+                        <div class="panchang-label">योग</div>
+                        <div class="panchang-value">शुभ</div>
+                    </div>
+                    <div class="panchang-item">
+                        <div class="panchang-label">सूर्योदय</div>
+                        <div class="panchang-value">०६:४२</div>
+                    </div>
+                    <div class="panchang-item">
+                        <div class="panchang-label">सूर्यास्त</div>
+                        <div class="panchang-value">१७:२८</div>
+                    </div>
+                </div>
+                
+                <div class="muhurat-section">
+                    <h3>शुभ मुहूर्त</h3>
+                    <div class="muhurat-list">
+                        <div class="muhurat-item good">
+                            <span class="time">०६:००-०७:३०</span>
+                            <span class="desc">ब्रह्म मुहूर्त</span>
+                        </div>
+                        <div class="muhurat-item good">
+                            <span class="time">१२:००-१३:३०</span>
+                            <span class="desc">अभिजित मुहूर्त</span>
+                        </div>
+                        <div class="muhurat-item avoid">
+                            <span class="time">१४:३०-१५:१५</span>
+                            <span class="desc">राहु काल</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horoscope Tab -->
+            <div class="tab-content" id="horoscope">
+                <div class="horoscope-header">
+                    <h2>आजको राशिफल</h2>
+                    <p>तपाईंको राशि अनुसार भविष्यफल</p>
+                </div>
+                <div class="zodiac-grid">
+                    <div class="zodiac-card" data-sign="aries">
+                        <div class="zodiac-icon">♈</div>
+                        <h3>मेष</h3>
+                        <p>Aries</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="taurus">
+                        <div class="zodiac-icon">♉</div>
+                        <h3>वृष</h3>
+                        <p>Taurus</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="gemini">
+                        <div class="zodiac-icon">♊</div>
+                        <h3>मिथुन</h3>
+                        <p>Gemini</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="cancer">
+                        <div class="zodiac-icon">♋</div>
+                        <h3>कर्कट</h3>
+                        <p>Cancer</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="leo">
+                        <div class="zodiac-icon">♌</div>
+                        <h3>सिंह</h3>
+                        <p>Leo</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="virgo">
+                        <div class="zodiac-icon">♍</div>
+                        <h3>कन्या</h3>
+                        <p>Virgo</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="libra">
+                        <div class="zodiac-icon">♎</div>
+                        <h3>तुला</h3>
+                        <p>Libra</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="scorpio">
+                        <div class="zodiac-icon">♏</div>
+                        <h3>वृश्चिक</h3>
+                        <p>Scorpio</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="sagittarius">
+                        <div class="zodiac-icon">♐</div>
+                        <h3>धनु</h3>
+                        <p>Sagittarius</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="capricorn">
+                        <div class="zodiac-icon">♑</div>
+                        <h3>मकर</h3>
+                        <p>Capricorn</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="aquarius">
+                        <div class="zodiac-icon">♒</div>
+                        <h3>कुम्भ</h3>
+                        <p>Aquarius</p>
+                    </div>
+                    <div class="zodiac-card" data-sign="pisces">
+                        <div class="zodiac-icon">♓</div>
+                        <h3>मीन</h3>
+                        <p>Pisces</p>
+                    </div>
+                </div>
+                
+                <div class="horoscope-detail" id="horoscopeDetail" style="display: none;">
+                    <h3 id="selectedSign">मेष राशि</h3>
+                    <div class="horoscope-text" id="horoscopeText">
+                        आज तपाईंको दिन धेरै राम्रो हुनेछ। काममा सफलता मिल्नेछ र स्वास्थ्यमा सुधार आउनेछ।
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
